@@ -48,6 +48,7 @@ namespace imagetest1
             // register the ImageWriter, this will save the file to disc
             services.AddTransient<IImageWriter, ImageWriter>();
             services.Configure<CloudinaryKeys>(opts => Configuration.Bind(opts));
+            services.AddDbContext<DatabaseContext>();
 
         }
 

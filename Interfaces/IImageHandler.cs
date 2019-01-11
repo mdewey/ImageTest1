@@ -6,5 +6,6 @@ namespace imagetest1.Interfaces
     public interface IImageHandler
     {
         Task<string> UploadImage(IFormFile file);
+        Task DeleteFile(string path);
     }
 }

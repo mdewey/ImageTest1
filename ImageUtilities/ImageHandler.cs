@@ -1,3 +1,4 @@
+using System.IO;
 using System.Threading.Tasks;
 using imagetest1.Interfaces;
 using Microsoft.AspNetCore.Http;
@@ -10,6 +11,11 @@ namespace imagetest1.ImageUtilities
         public ImageHandler(IImageWriter imageWriter)
         {
             _imageWriter = imageWriter;
+        }
+
+        public async Task DeleteFile(string path)
+        {
+           File.Delete(path);
         }
 
         public async Task<string> UploadImage(IFormFile file)
