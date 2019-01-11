@@ -2,22 +2,27 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using imagetest1.ImageUtilities;
 using imagetest1.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 
-namespace imagetest1.Controllers
+namespace content.Controllers
 {
     [Route("api/[controller]")]
     public class ImageController : Controller
     {
 
         private readonly IImageHandler _imageHandler;
+        private readonly IOptions<CloudinaryKeys> _options;
 
-        public ImageController(IImageHandler imageHandler )
+        public ImageController(IImageHandler imageHandler, IOptions<CloudinaryKeys> options)
         {
             _imageHandler = imageHandler;
+            _options = options;
+            Console.WriteLine(_options.Value.CloudName);
+            
         }
 
         /// <summary>
@@ -30,8 +35,11 @@ namespace imagetest1.Controllers
         {
 
             var path =  await _imageHandler.UploadImage(file);
-            return Ok(path);
+            var rv = new CloudinaryStorage(_options.Value).UploadFile(path);
+            // TODO: add to database
+            return Ok(rv);
         }
+
 
     }
 }

@@ -53,7 +53,7 @@ export class Home extends Component {
                 {
                   isDragActive ?
                     <p>Drop files here...</p> :
-                    <p>Try dropping some files here, or click to select files to upload.</p>
+                    <p>Here we go</p>
                 }
               </div>
             )
