@@ -37,7 +37,7 @@ namespace content.Controllers
         /// <param name="file"></param>
         /// <returns></returns>
         [HttpPost]
-        public async Task<ActionResult> UploadImage(IFormFile file)
+        public async Task<ActionResult> UploadImage(IFormFile file, [FromForm] string Name)
         {
 
             var path =  await _imageHandler.UploadImage(file);
@@ -51,7 +51,7 @@ namespace content.Controllers
             
             await _imageHandler.DeleteFile(path);
 
-            return Ok(new {path, image});
+            return Ok(new {path, image, Name});
         }
 
 

@@ -16,6 +16,8 @@ export class Home extends Component {
       const formData = new FormData();
       formData.append("file", file);
 
+      formData.append("name", "bobby");
+
       // Make an AJAX upload request using Axios
       return axios.post("/api/image", formData, {
         // using 
