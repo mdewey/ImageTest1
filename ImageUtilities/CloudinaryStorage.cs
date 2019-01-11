@@ -16,7 +16,6 @@ namespace imagetest1.ImageUtilities
                   creds.CloudSecret?? Environment.GetEnvironmentVariable("CLOUD_SECRET"));
 
             _cloudinary = new Cloudinary(account);
-
         }
 
         public ImageUploadResult UploadFile(string path)
